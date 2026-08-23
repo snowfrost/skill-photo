@@ -2,7 +2,7 @@
 
 > Auto-bundled **photo-style & photo-editing** skill suite. Each folder is a standalone WorkBuddy / OpenClaw skill (a folder containing `SKILL.md`).
 
-**25 skills** — install by copying the whole repo into `~/.workbuddy/skills/` (or drag each folder in).
+**26 skills** — install by copying the whole repo into `~/.workbuddy/skills/` (or drag each folder in).
 
 ---
 
@@ -127,6 +127,11 @@
 ![photo-revival demo](photo-revival/examples/07_mountain_yaks.png)
 ![photo-revival demo](photo-revival/examples/06_train_window_page.png)
 ![photo-revival demo](photo-revival/examples/06_cat_bed_paper.png)
+
+---
+
+## photo-skill-router
+`photo-skill-router/` — skill-photo 套件的总路由引导。当用户提出照片风格化、海报、明信片、zine、贴纸、邮票、地图、插画配图、IP 提示词、摄影场景设计、审美分析等需求、但不确定该用套件里哪个具体 skill 时，由本 skill 先理解需求、匹配到最合适的子 skill，再通过 @skill:<目标skill> 触发执行。属于 skill-photo 套件的入口引导，不直接处理图像，只负责路由与触发。
 
 ---
 
