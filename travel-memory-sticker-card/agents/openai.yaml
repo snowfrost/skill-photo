@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅行记忆贴纸卡"
+  short_description: "将照片做成水粉色块、贴纸和英文关键词的记忆卡"
+  default_prompt: "使用 $travel-memory-sticker-card 把我上传的照片做成水粉剪纸质感的旅行记忆贴纸卡，左图底部加入三个英文关键词。"
