@@ -1,0 +1,4 @@
+interface:
+  display_name: "图章"
+  short_description: "Turn photos into direct-splice archival stamp artworks"
+  default_prompt: "Use $make-photo-stamp-archive to turn this photo into a clean archival paper composition with a compact custom seal."

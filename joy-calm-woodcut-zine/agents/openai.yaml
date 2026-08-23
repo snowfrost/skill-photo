@@ -1,0 +1,4 @@
+interface:
+  display_name: "Joy Calm Woodcut Zine"
+  short_description: "Create calm scene-aware woodcut sticker zine posters"
+  default_prompt: "Use $joy-calm-woodcut-zine to turn this photo into a calm, scene-aware woodcut sticker zine poster."
