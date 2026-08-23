@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aesthetic Extractor"
+  short_description: "Extract visual style and prompt vocabulary"
+  default_prompt: "Use $aesthetic-extractor to analyze this image and extract the style principles, beautiful details, and prompt words needed to generate a similar aesthetic."
