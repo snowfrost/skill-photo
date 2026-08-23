@@ -41,22 +41,22 @@
 ## ian-xiaohei-illustrations
 `ian-xiaohei-illustrations/` — 生成 Ian 风格的中文正文配图。用于用户要求为中文文章、帖子、博客、Notion 文档、工作流文档、方法论、流程、结构、状态、隐喻或观点生成“怪诞”“小黑”“手绘”“正文配图”“文章插图”“配图建议”“shot list”“去标题/改图”等任务；默认使用小黑 IP、纯白手绘、少量红橙蓝批注、简洁清爽但天马行空的视觉风格。
 
-![ian-xiaohei-illustrations demo](ian-xiaohei-illustrations/assets/ian-wechat-qr.jpg)
 ![ian-xiaohei-illustrations demo](ian-xiaohei-illustrations/assets/examples/05-handoff-path.png)
 ![ian-xiaohei-illustrations demo](ian-xiaohei-illustrations/examples/images/04-handoff-path.png)
+![ian-xiaohei-illustrations demo](ian-xiaohei-illustrations/ian-xiaohei-illustrations/assets/examples/05-handoff-path.png)
 
 ---
 
 ## ink-rubbing-poster
 `ink-rubbing-poster/` — 将用户上传的单张照片制作成一张独立的"民俗图录 × 古物拓片 × 现代平面设计"气质的高级设计海报。3:4 竖版、上下 1:1 分区，上半保留原照片，下半以几何骨架重构主体为拓印风格图形。适用于单图单海报输出，禁止多图拼接。
 
+![ink-rubbing-poster demo](ink-rubbing-poster/examples/ink-rubbing-poster-example-1.jpg)
+
 ---
 
 ## ip-all-png-template
 `ip-all-png-template/` — Generate reusable image prompts for Chinese article illustrations in a fixed Ian-style minimal white-paper hand-drawn sketch style, with only the IP character and color palette left for the user to fill. Use when the user wants article illustrations, PNG prompts, shot lists, knowledge-card illustrations, or wants to turn their own IP role and brand colors into a repeatable simple-line-drawing prompt template.
 
-![ip-all-png-template demo](ip-all-png-template/assets/ai-agent-community-qr.jpg)
-![ip-all-png-template demo](ip-all-png-template/assets/微信图片_20260314162027_367_435.jpg)
 ![ip-all-png-template demo](ip-all-png-template/assets/0922e4edc43f32784be40bd779ef6333.jpg)
 
 ---
@@ -82,6 +82,9 @@
 ## make-photo-stamp-archive
 `make-photo-stamp-archive/` — Transform one or more supplied photos into clean direct-splice archival artworks that pair a faithfully preserved photograph with a warm-white paper panel containing a compact hand-pressed custom seal or stamp. Use for requests mentioning 图章、印章、stamp、seal、照片加图章、照片档案、左右拼接、清爽纸张、圆形章、方形章、异形章、建筑轮廓章、主体缩小、移动到角落, or iterative changes to stamp shape, border, scale, position, ink color, caption, paper age, or splice orientation.
 
+![make-photo-stamp-archive demo](make-photo-stamp-archive/examples/make-photo-stamp-archive-example-1.jpg)
+![make-photo-stamp-archive demo](make-photo-stamp-archive/examples/make-photo-stamp-archive-example-2.jpg)
+
 ---
 
 ## map-creator
@@ -94,6 +97,9 @@
 
 ## paint-doodle
 `paint-doodle/` — Generate rough MS Paint style event explanation images from a user described topic, incident, or absurd scene. Use when asked for 事件解释图, 事件示意图, 事故过程图, 吐槽式重现图, 鼠标乱画风说明图, or intentionally bad hand-drawn visual explanations. Default to a few harsh old MS Paint colors unless the user explicitly asks for black-and-white or explicitly specifies a palette.
+
+![paint-doodle demo](paint-doodle/examples/paint-doodle-example-1.jpg)
+![paint-doodle demo](paint-doodle/examples/paint-doodle-example-2.png)
 
 ---
 
@@ -141,6 +147,8 @@
 ## photodesign-skill-zh
 `photodesign-skill-zh/` — 专业摄影器材、参数和案例配方指南，用于角色、道具、场景的 AI 图像生成。使用于需要把相机机身、镜头品牌、焦距、光圈、色温、光照角度、布光模式、景深、焦外、胶片或电影镜头质感转写成提示词的任务，适用于 GPT-image-2、nanobanana2、nanobananapro、seedream 5.0 等文生图/图生图模型。
 
+![photodesign-skill-zh demo](photodesign-skill-zh/examples/photodesign-skill-zh-example-1.jpg)
+
 ---
 
 ## pixel-style-poster-skill
@@ -155,10 +163,16 @@
 ## scene-distillation-zine-v1-3
 `scene-distillation-zine-v1-3/` — Transform a user-supplied photo into an expressive minimal zine poster made only from original source-derived illustration, an artistic proposition, emotional tension, visual metaphor, spacious negative space, art-directed high-chroma color, and unconstrained authorial typography. Let wording, language, amount, placement, type voices, scale, direction, legibility, and image interaction follow expression and aesthetic judgment rather than presets. Preserve source orientation by default with a 3:5 portrait output or 5:3 landscape output. Add source-derived distributed supporting accents and a natural isolated-contour option alongside adaptive paper-edge transitions. Support an exact `单色块模式` trigger for one contiguous saturated color field with all remaining forms in neutral ink. Use for authored abstract or editorial reinterpretations that communicate an emotion or idea without embedding, cropping, tracing, or preserving the original photographic material in the final image.
 
+![scene-distillation-zine-v1-3 demo](scene-distillation-zine-v1-3/examples/scene-distillation-zine-v1-3-example-2.jpg)
+![scene-distillation-zine-v1-3 demo](scene-distillation-zine-v1-3/examples/scene-distillation-zine-v1-3-example-1.png)
+
 ---
 
 ## scenes-gathered-zine-v1-3
 `scenes-gathered-zine-v1-3/` — Transform a user-supplied photo into a vertical 3:5 Gathered Scenes Zine poster that anchors truthful photography inside a spacious source-derived abstract illustration field, aggressively compresses dense foliage and other micro-detail into a few large quiet forms, integrates one high-chroma hue as compositional structure, and preserves a visibly hand-torn fibrous photo-to-paper edge. Use when the user wants a tactile minimal paper collage with simplified illustration, active negative space, restrained English-default, Chinese, or bilingual micro-text, and an unmistakable but quiet torn-paper boundary.
+
+![scenes-gathered-zine-v1-3 demo](scenes-gathered-zine-v1-3/examples/scenes-gathered-zine-v1-3-example-2.jpg)
+![scenes-gathered-zine-v1-3 demo](scenes-gathered-zine-v1-3/examples/scenes-gathered-zine-v1-3-example-1.jpg)
 
 ---
 
@@ -174,6 +188,9 @@
 ## travel-memory-sticker-card
 `travel-memory-sticker-card/` — Transform a user-uploaded photograph into one horizontal collectible memory card with a large quiet editorial illustration, six integrated journaling-sticker motifs, three small English keywords beneath the left illustration, tactile paper grain, and deliberately clumsy flat color fields. Use when Codex needs to P图, edit, redraw, stylize, or turn a travel, street, landscape, lifestyle, portrait, or pet photo into a minimalist postcard-like card or sticker-card in this visual language. Preserve recognition through one same-medium identification anchor and optionally one exact place-defining landmark text shown once; never retain an unintended photorealistic patch, signature, or watermark.
 
+![travel-memory-sticker-card demo](travel-memory-sticker-card/examples/travel-memory-sticker-card-example-2.jpg)
+![travel-memory-sticker-card demo](travel-memory-sticker-card/examples/travel-memory-sticker-card-example-1.jpg)
+
 ---
 
 ## travel-photo-abstraction
@@ -187,6 +204,9 @@
 
 ## visual-memory-translator
 `visual-memory-translator/` — Visual Memory Translator / 影像转译编辑器
+
+![visual-memory-translator demo](visual-memory-translator/examples/visual-memory-translator-example-1.jpg)
+![visual-memory-translator demo](visual-memory-translator/examples/visual-memory-translator-example-2.png)
 
 ---
 

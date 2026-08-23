@@ -1,0 +1,3 @@
+# local push progress / debug files (never commit)
+.push_progress.json
+*.log
