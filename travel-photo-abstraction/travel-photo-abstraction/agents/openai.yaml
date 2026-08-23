@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅行照片视觉提炼"
+  short_description: "将原始照片干净地提炼为稀疏抽象视觉档案"
+  default_prompt: "使用 $travel-photo-abstraction 分析原始照片，只生成无纹理、无文字的 CLEAN 抽象下方面板，再用确定性脚本与未经生成式重绘的原照片拼接；最终只保留编号、日期和 1–3 词短语。"
