@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editable Theme Journal</title>
+  <script src="./html2canvas.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #d8e4dc; color: #26342f; font-family: "Hannotate SC", "Comic Sans MS", "Yuanti SC", "PingFang SC", sans-serif; }
+    .wrap { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 22px; max-width: 1280px; margin: 0 auto; padding: 20px; }
+    .poster { position: relative; width: min(900px, 100%); min-height: var(--poster-h, 1200px); margin: 0 auto; overflow: hidden; background: #f8f5ec; border: 10px solid #d2ded6; box-shadow: 0 18px 40px rgba(52,70,62,.15); }
+    .poster::before { content: ""; position: absolute; inset: 24px; border: 2px dashed rgba(99,123,113,.28); border-radius: 18px; pointer-events: none; }
+    .paper-motif { position: absolute; inset: 0; opacity: .42; pointer-events: none; background-image: linear-gradient(rgba(99,123,113,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(99,123,113,.08) 1px, transparent 1px); background-size: 34px 34px; }
+    .title { position: absolute; left: 150px; top: 46px; width: 600px; text-align: center; font-size: 48px; line-height: 1.05; font-weight: 900; text-shadow: 2px 3px 0 rgba(188,205,194,.7); z-index: 3; }
+    .subtitle { position: absolute; left: 292px; top: 174px; z-index: 3; padding: 5px 20px; border-radius: 999px; background: #dfeade; color: #586c62; font-size: 20px; font-weight: 800; }
+    .axis-line { position: absolute; left: calc(50% - 2px); top: var(--axis-top, 250px); width: 5px; height: var(--axis-height, 900px); z-index: 4; pointer-events: none; }
+    .axis-dash { position: absolute; left: 0; width: 5px; height: 14px; background: rgba(126,91,82,.55); }
+    .time { position: absolute; left: calc(50% - 26px); z-index: 6; min-width: 52px; text-align: center; padding: 3px 7px; border-radius: 999px; background: #9d786f; color: #fff8ef; font-weight: 900; }
+    .dot { position: absolute; left: calc(50% + 10px); z-index: 6; width: 16px; height: 16px; border-radius: 50%; background: #9d786f; border: 4px solid #fff8ef; }
+    [contenteditable="true"] { outline: none; }
+    [data-draggable] { position: absolute; z-index: 5; transform-origin: center; scale: var(--item-scale,1); cursor: pointer; }
+    .drag-mode [data-draggable] { cursor: grab; touch-action: none; user-select: none; }
+    .selected { outline: 3px solid #6f897d; outline-offset: 3px; }
+    .section { width: 330px; }
+    .section h2 { display: inline-block; margin: 0; padding: 0 10px; font-size: 26px; line-height: 1.22; font-weight: 900; background: linear-gradient(transparent 62%, rgba(220,234,222,.9) 62%); overflow-wrap: anywhere; }
+    .badge { display: inline-block; min-width: 52px; margin-right: 10px; padding: 4px 10px; border-radius: 18px 18px 6px 18px; background: #9d786f; color: #fff8ef; text-align: center; font-weight: 900; }
+    .body { margin-top: 14px; font-size: 18px; line-height: 1.45; font-weight: 800; overflow-wrap: anywhere; }
+    .photo { width: var(--photo-w,190px); padding: 8px; border-radius: 22px; background: #fbf8f0; box-shadow: 0 5px 0 rgba(61,75,68,.055), 0 12px 24px rgba(56,68,62,.1); }
+    .photo img { display: block; width: 100%; height: auto; border-radius: 15px; filter: saturate(.86) contrast(.94) brightness(1.04); }
+    .photo.crop-mode { height: var(--crop-h, 240px); overflow: hidden; }
+    .photo.crop-mode img { height: 100%; object-fit: cover; transform-origin: center; transform: translate(calc(var(--crop-x,0) * 1px), calc(var(--crop-y,0) * 1px)) scale(var(--crop-zoom,1)); }
+    .tools { position: sticky; top: 20px; align-self: start; padding: 18px; background: #f5f2e9; border: 1px solid rgba(81,96,88,.18); color: #40534b; }
+    .tools button, .tools input { width: 100%; margin: 7px 0; padding: 10px; border: 1px solid rgba(81,96,88,.22); background: #fffbf2; color: inherit; font: inherit; }
+    .tools label { display: block; margin-top: 12px; font-weight: 800; }
+    .hint { font-size: 13px; line-height: 1.45; opacity: .75; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="poster" id="poster">
+      <div class="paper-motif"></div>
+      <div class="title" contenteditable="true">主题手帐<br>小记</div>
+      <div class="subtitle" contenteditable="true">半日路线 · 可编辑模板</div>
+      <div class="axis-line" id="axisLine"></div>
+
+      <div class="time" data-time style="top:280px" contenteditable="true">10:20</div><div class="dot" style="top:315px"></div>
+      <section class="section" data-draggable data-kind="text" style="left:80px;top:280px">
+        <h2><span class="badge" contenteditable="true">01</span><span contenteditable="true">先慢下来</span></h2>
+        <div class="body" contenteditable="true">写一句今天看到的细节。<br>再补一句你的感受。</div>
+      </section>
+      <figure class="photo" data-draggable data-kind="photo" style="right:90px;top:250px;--photo-w:190px"><img alt="" src="" /></figure>
+    </main>
+
+    <aside class="tools">
+      <p class="hint">点击任意模块后调整位置、旋转和大小。照片默认完整显示；需要局部取景时再打开裁剪。</p>
+      <label><input id="dragToggle" type="checkbox" /> 拖拽布局</label>
+      <button id="addText">新增文字描述</button>
+      <button id="addPair">新增图文模块</button>
+      <button id="deleteSelected">删除选中模块</button>
+      <button id="replaceImage">替换选中图片</button>
+      <input id="fileInput" type="file" accept="image/*" hidden />
+      <label>整体缩放 <input id="scale" type="range" min=".5" max="1.8" step=".01" value="1" /></label>
+      <label>旋转角度 <input id="rotate" type="range" min="-18" max="18" step=".1" value="0" /></label>
+      <label>裁剪照片 <input id="cropToggle" type="checkbox" /></label>
+      <label>裁剪缩放 <input id="cropZoom" type="range" min="1" max="2.8" step=".01" value="1" /></label>
+      <label>裁剪 X <input id="cropX" type="range" min="-180" max="180" step="1" value="0" /></label>
+      <label>裁剪 Y <input id="cropY" type="range" min="-180" max="180" step="1" value="0" /></label>
+      <button id="download">下载当前图片</button>
+    </aside>
+  </div>
+
+  <script>
+    const poster = document.getElementById('poster');
+    const axisLine = document.getElementById('axisLine');
+    let selected = null;
+    let dragging = null;
+
+    function select(el) {
+      if (selected) selected.classList.remove('selected');
+      selected = el;
+      if (selected) selected.classList.add('selected');
+      syncControls();
+    }
+
+    function syncControls() {
+      if (!selected) return;
+      scale.value = parseFloat(selected.style.getPropertyValue('--item-scale') || '1');
+      const rot = (selected.style.rotate || '0deg').replace('deg','');
+      rotate.value = parseFloat(rot || 0);
+      const isPhoto = selected.classList.contains('photo');
+      cropToggle.disabled = cropZoom.disabled = cropX.disabled = cropY.disabled = !isPhoto;
+      cropToggle.checked = isPhoto && selected.classList.contains('crop-mode');
+      cropZoom.value = selected.style.getPropertyValue('--crop-zoom') || 1;
+      cropX.value = selected.style.getPropertyValue('--crop-x') || 0;
+      cropY.value = selected.style.getPropertyValue('--crop-y') || 0;
+    }
+
+    poster.addEventListener('click', e => {
+      const item = e.target.closest('[data-draggable]');
+      if (item) select(item);
+    });
+
+    poster.addEventListener('pointerdown', e => {
+      if (!document.body.classList.contains('drag-mode')) return;
+      const item = e.target.closest('[data-draggable]');
+      if (!item) return;
+      select(item);
+      const r = item.getBoundingClientRect();
+      const pr = poster.getBoundingClientRect();
+      dragging = { item, dx: e.clientX - r.left, dy: e.clientY - r.top, pr };
+      item.setPointerCapture(e.pointerId);
+    });
+
+    poster.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const x = e.clientX - dragging.pr.left - dragging.dx;
+      const y = e.clientY - dragging.pr.top - dragging.dy;
+      dragging.item.style.left = `${Math.max(20, x)}px`;
+      dragging.item.style.right = 'auto';
+      dragging.item.style.top = `${Math.max(20, y)}px`;
+      extendPoster();
+    });
+
+    poster.addEventListener('pointerup', () => dragging = null);
+
+    dragToggle.onchange = () => document.body.classList.toggle('drag-mode', dragToggle.checked);
+    scale.oninput = () => selected && selected.style.setProperty('--item-scale', scale.value);
+    rotate.oninput = () => selected && (selected.style.rotate = `${rotate.value}deg`);
+    cropToggle.onchange = () => { if (selected?.classList.contains('photo')) selected.classList.toggle('crop-mode', cropToggle.checked); };
+    cropZoom.oninput = () => selected && selected.style.setProperty('--crop-zoom', cropZoom.value);
+    cropX.oninput = () => selected && selected.style.setProperty('--crop-x', cropX.value);
+    cropY.oninput = () => selected && selected.style.setProperty('--crop-y', cropY.value);
+
+    replaceImage.onclick = () => selected?.classList.contains('photo') && fileInput.click();
+    fileInput.onchange = () => {
+      const file = fileInput.files?.[0];
+      if (!file || !selected?.classList.contains('photo')) return;
+      const reader = new FileReader();
+      reader.onload = () => selected.querySelector('img').src = reader.result;
+      reader.readAsDataURL(file);
+    };
+
+    addText.onclick = () => {
+      const idx = poster.querySelectorAll('.section').length + 1;
+      const y = Number.parseInt(getComputedStyle(poster).getPropertyValue('--poster-h')) - 190;
+      poster.insertAdjacentHTML('beforeend', `<div class="time" data-time style="top:${y}px" contenteditable="true">新增</div><div class="dot" style="top:${y + 35}px"></div><section class="section" data-draggable data-kind="text" style="left:80px;top:${y}px"><h2><span class="badge" contenteditable="true">${String(idx).padStart(2,'0')}</span><span contenteditable="true">新增观察</span></h2><div class="body" contenteditable="true">写一句看到的细节。<br>再补一句你的感受。</div></section>`);
+      extendPoster();
+      renderAxisDashes();
+    };
+
+    addPair.onclick = () => {
+      addText.click();
+      const y = Number.parseInt(getComputedStyle(poster).getPropertyValue('--poster-h')) - 210;
+      poster.insertAdjacentHTML('beforeend', `<figure class="photo" data-draggable data-kind="photo" style="right:90px;top:${y}px;--photo-w:190px"><img alt="" src="" /></figure>`);
+      extendPoster();
+    };
+
+    deleteSelected.onclick = () => {
+      if (!selected) return;
+      selected.remove();
+      selected = null;
+      extendPoster();
+    };
+
+    function extendPoster() {
+      let max = 0;
+      poster.querySelectorAll('[data-draggable], [data-time], .dot').forEach(el => max = Math.max(max, el.offsetTop + el.offsetHeight));
+      const h = Math.max(1200, max + 130);
+      poster.style.setProperty('--poster-h', `${h}px`);
+      poster.style.setProperty('--axis-height', `${h - 310}px`);
+      renderAxisDashes();
+    }
+
+    function renderAxisDashes() {
+      const h = Number.parseInt(getComputedStyle(poster).getPropertyValue('--axis-height')) || 900;
+      axisLine.innerHTML = '';
+      for (let y = 0; y < h; y += 28) {
+        const d = document.createElement('i');
+        d.className = 'axis-dash';
+        d.style.top = `${y}px`;
+        axisLine.appendChild(d);
+      }
+    }
+
+    async function waitForImages() {
+      await Promise.all([...poster.querySelectorAll('img')].filter(img => img.src).map(img => img.decode ? img.decode().catch(() => {}) : Promise.resolve()));
+    }
+
+    download.onclick = async () => {
+      try {
+        if (selected) selected.classList.remove('selected');
+        await waitForImages();
+        const canvas = await html2canvas(poster, { backgroundColor: null, scale: 2, useCORS: false, allowTaint: false });
+        const a = document.createElement('a');
+        a.download = 'editable-journal.png';
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      } catch (err) {
+        alert(`PNG 截图失败：${err.message || err}`);
+      } finally {
+        if (selected) selected.classList.add('selected');
+      }
+    };
+
+    renderAxisDashes();
+  </script>
+</body>
+</html>

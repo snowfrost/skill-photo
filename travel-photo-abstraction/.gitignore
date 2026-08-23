@@ -1,0 +1,24 @@
+# Do not publish photographs or generated examples without redistribution rights.
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.tif
+*.tiff
+
+# Publish only the reviewed, watermarked showcase set.
+!showcase/
+!showcase/*.png
+
+# Publish the complete portable reference library sourced from Desktop/memory.
+!travel-photo-abstraction/assets/
+!travel-photo-abstraction/assets/style-references/
+!travel-photo-abstraction/assets/style-references/memory-reference-*.png
+
+# Local working files.
+tmp/
+__pycache__/
+*.pyc
+Thumbs.db
+.DS_Store

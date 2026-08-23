@@ -1,0 +1,4 @@
+interface:
+  display_name: "Theme Editable Journal"
+  short_description: "Theme-matched editable travel journal generator"
+  default_prompt: "Use $theme-editable-journal to turn my photos into a theme-matched editable electronic journal with WYSIWYG PNG export."
