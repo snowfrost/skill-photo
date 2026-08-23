@@ -1,0 +1,16 @@
+{
+  "amap": {
+    "api_key": "填写你的高德地图 Web 服务 API Key",
+    "timeout": 12
+  },
+  "gpt_image": {
+    "api_key": "填写你的 OpenAI API Key",
+    "model": "gpt-image-2",
+    "endpoint": "https://api.openai.com/v1/images/edits",
+    "template": "prompts/map_style_templates/01_手绘风城市导览地图.md",
+    "output_dir": "outputs/stylized",
+    "output_format": "png",
+    "size": "1536x1024",
+    "timeout": 120
+  }
+}

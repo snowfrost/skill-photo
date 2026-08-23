@@ -1,0 +1,104 @@
+{
+  "city": "上海",
+  "theme": "guide",
+  "source": "sample",
+  "coordinate_policy": "AMap GCJ-02 is converted to WGS84 for OSMnx rendering",
+  "pois": [
+    {
+      "input_name": "SLAB TOWN",
+      "resolved_name": "SLAB TOWN 石板城咖啡",
+      "source": "sample",
+      "poi_id": "sample-001",
+      "address": "富民路 210 号",
+      "province": "上海市",
+      "city": "上海市",
+      "district": "徐汇区",
+      "type": "餐饮服务;咖啡厅;咖啡厅",
+      "typecode": "050500",
+      "lng_gcj02": 121.4562,
+      "lat_gcj02": 31.2164,
+      "lng_wgs84": 121.4516,
+      "lat_wgs84": 31.2185,
+      "confidence": 0.95,
+      "status": "resolved",
+      "needs_review": false,
+      "candidates": [
+        {
+          "score": 0.95,
+          "poi_id": "sample-001",
+          "name": "SLAB TOWN 石板城咖啡",
+          "address": "富民路 210 号",
+          "city": "上海市",
+          "district": "徐汇区",
+          "type": "餐饮服务;咖啡厅;咖啡厅",
+          "lng_gcj02": 121.4562,
+          "lat_gcj02": 31.2164
+        }
+      ]
+    },
+    {
+      "input_name": "村口大树",
+      "resolved_name": "村口大树",
+      "source": "sample",
+      "poi_id": "sample-002",
+      "address": "长乐路 666 号附近",
+      "province": "上海市",
+      "city": "上海市",
+      "district": "徐汇区",
+      "type": "餐饮服务;咖啡厅;咖啡厅",
+      "typecode": "050500",
+      "lng_gcj02": 121.4556,
+      "lat_gcj02": 31.2172,
+      "lng_wgs84": 121.4510,
+      "lat_wgs84": 31.2193,
+      "confidence": 0.92,
+      "status": "resolved",
+      "needs_review": false,
+      "candidates": [
+        {
+          "score": 0.92,
+          "poi_id": "sample-002",
+          "name": "村口大树",
+          "address": "长乐路 666 号附近",
+          "city": "上海市",
+          "district": "徐汇区",
+          "type": "餐饮服务;咖啡厅;咖啡厅",
+          "lng_gcj02": 121.4556,
+          "lat_gcj02": 31.2172
+        }
+      ]
+    },
+    {
+      "input_name": "ALWAYS Coffee&Bar",
+      "resolved_name": "ALWAYS Coffee&Bar",
+      "source": "sample",
+      "poi_id": "sample-003",
+      "address": "长乐路 38 号",
+      "province": "上海市",
+      "city": "上海市",
+      "district": "徐汇区",
+      "type": "餐饮服务;酒吧;酒吧",
+      "typecode": "050500",
+      "lng_gcj02": 121.4571,
+      "lat_gcj02": 31.2168,
+      "lng_wgs84": 121.4525,
+      "lat_wgs84": 31.2189,
+      "confidence": 0.93,
+      "status": "resolved",
+      "needs_review": false,
+      "candidates": [
+        {
+          "score": 0.93,
+          "poi_id": "sample-003",
+          "name": "ALWAYS Coffee&Bar",
+          "address": "长乐路 38 号",
+          "city": "上海市",
+          "district": "徐汇区",
+          "type": "餐饮服务;酒吧;酒吧",
+          "lng_gcj02": 121.4571,
+          "lat_gcj02": 31.2168
+        }
+      ]
+    }
+  ]
+}

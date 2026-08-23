@@ -1,0 +1,1 @@
+"""Poster styling modules."""

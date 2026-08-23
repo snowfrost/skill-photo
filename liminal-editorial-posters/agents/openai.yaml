@@ -1,0 +1,4 @@
+interface:
+  display_name: "Liminal Frame Atelier"
+  short_description: "Relational photo narratives through quiet geometric frames"
+  default_prompt: "Use $liminal-editorial-posters to turn each uploaded photo into its own exact 3:4 split poster, preserving the top photograph and rebuilding its complete narrative signature through an adaptive frame-crossing editorial composition below."
